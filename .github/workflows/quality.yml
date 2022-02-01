@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Installing node modules v${{ matrix.node }}
-      - run: npm ci
+        run: npm ci
 
       - name: Linting
         run: npm run lint
@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Installing node modules v${{ matrix.node }}
-      - run: npm ci
+        run: npm ci
 
       - name: Typechecking
         run: npm run typecheck
@@ -54,7 +54,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Installing node modules v${{ matrix.node }}
-      - run: npm ci
+        run: npm ci
 
       - name: Check code format with prettier
         run: npm run format:check
