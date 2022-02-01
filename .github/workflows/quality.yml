@@ -1,5 +1,7 @@
 name: Code quality
-on: [push]
+on:
+  push:
+  pull_request:
 
 jobs:
   lint:
@@ -58,3 +60,21 @@ jobs:
 
       - name: Check code format with prettier
         run: npm run format:check
+
+  prettify:
+    needs: [format]
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Prettify
+        uses: creyD/prettier_action@v4.2
+        with:
+          prettier_options: --write --ignore-unknown "."
+          only_changed: true
