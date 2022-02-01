@@ -77,4 +77,3 @@ jobs:
         uses: creyD/prettier_action@v4.2
         with:
           prettier_options: --write --ignore-unknown .
-          only_changed: true
